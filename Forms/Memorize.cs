@@ -21,7 +21,6 @@ namespace Memorize.Forms
         public Entities.Game Game { get; set; }
         public Player Player { get; set; }
         // Project settings
-        public string ProjectPath { get; set; }
         public string ThemePath { get; set; }
         // Game properties
         public List<PictureBox> Cards { get; set; }
@@ -40,7 +39,6 @@ namespace Memorize.Forms
         }
         private void Game_Load(object sender, EventArgs e)
         {
-            SetProjectPath();
             SetThemePath();
             SetGameSize();
             InitializeCards();
@@ -50,15 +48,10 @@ namespace Memorize.Forms
         }
 
         // Project settings
-        public void SetProjectPath() 
-        {
-            ProjectPath = Directory.GetCurrentDirectory();
-            ProjectPath = ProjectPath.Replace(@"bin\Debug\net6.0-windows", "");
-        }
         public void SetThemePath()
         {
             ThemePath = $@"Resources\Images\Themes\{Game.Theme}";
-            ThemePath = $@"{ProjectPath}{ThemePath}";
+            ThemePath = $@"{ThemePath}";
         }
 
         // Game Size
